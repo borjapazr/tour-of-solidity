@@ -46,9 +46,7 @@ module.exports = {
   root: true,
   env: {
     es2020: true,
-    node: true,
-    jest: true,
-    'jest/globals': true
+    node: true
   },
   parserOptions: {
     ecmaVersion: 12,
@@ -152,6 +150,10 @@ module.exports = {
         'import/no-deprecated': 'error',
         'import/group-exports': 'error',
         'import/exports-last': 'error',
+        'import/no-extraneous-dependencies': [
+          'error',
+          { devDependencies: true, optionalDependencies: false, peerDependencies: false }
+        ],
         'padding-line-between-statements': [
           'error',
           { blankLine: 'always', prev: '*', next: 'export' },
@@ -181,23 +183,11 @@ module.exports = {
         'node/no-unsupported-features/es-syntax': ['error', { ignores: ['modules'] }],
         // node plugin cannot resolve TypeScript's path aliases. See https://github.com/mysticatea/eslint-plugin-node/issues/233
         'node/no-missing-import': 'off',
+        'node/no-unpublished-import': 'off',
+        'node/no-extraneous-import': 'off',
         'promise/no-callback-in-promise': 'off',
         'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }]
-      },
-      overrides: [
-        {
-          files: ['*.unit.ts', '*.int.ts', '*.e2e.ts', '*.spec.ts', '*.test.ts'],
-          plugins: ['jest'],
-          env: {
-            jest: true,
-            'jest/globals': true
-          },
-          extends: ['plugin:jest/recommended', 'plugin:jest/style'],
-          rules: {
-            'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'request.**.expect'] }]
-          }
-        }
-      ]
+      }
     }
   ]
 };

@@ -4,6 +4,7 @@
   "rules": {
     "avoid-suicide": "error",
     "no-unused-vars": "error",
+    "compiler-version": ["error", "^0.8.0"],
     "const-name-snakecase": "error",
     "contract-name-camelcase": "error",
     "event-name-camelcase": "error",

@@ -9,6 +9,8 @@ coverage
 
 # Production
 dist
+artifacts
+cache
 
 # Misc
 .DS_Store
